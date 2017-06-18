@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.CampusPrice" table="campus_price" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="courseType" class="com.yaodingjiaoyu.datebase.pojo.CourseType" fetch="select">
+            <column name="course_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="select">
+            <column name="campus" not-null="true">
+                <comment>&#230;&#160;&#161;&#229;&#140;&#186;&#231;&#154;&#132;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+            </column>
+        </many-to-one>
+        <property name="l1" type="int">
+            <column name="L1" not-null="true">
+                <comment>&#229;&#176;&#143;&#228;&#184;&#128;&#231;&#154;&#132;&#228;&#184;&#128;&#229;&#175;&#185;&#228;&#184;&#128;&#228;&#187;&#183;&#230;&#160;&#188;</comment>
+            </column>
+        </property>
+        <property name="l2" type="int">
+            <column name="L2" not-null="true" />
+        </property>
+        <property name="l3" type="int">
+            <column name="L3" not-null="true" />
+        </property>
+        <property name="l4" type="int">
+            <column name="L4" not-null="true" />
+        </property>
+        <property name="l5" type="int">
+            <column name="L5" not-null="true" />
+        </property>
+        <property name="l6" type="int">
+            <column name="L6" not-null="true" />
+        </property>
+        <property name="l7" type="int">
+            <column name="L7" not-null="true" />
+        </property>
+        <property name="l8" type="int">
+            <column name="L8" not-null="true" />
+        </property>
+        <property name="l9" type="int">
+            <column name="L9" not-null="true" />
+        </property>
+        <property name="l10" type="int">
+            <column name="L10" not-null="true" />
+        </property>
+        <property name="l11" type="int">
+            <column name="L11" not-null="true" />
+        </property>
+        <property name="l12" type="int">
+            <column name="L12" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

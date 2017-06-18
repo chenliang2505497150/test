@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.ClassTime" table="class_time" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="classtime" type="string">
+            <column name="classtime" length="20" not-null="true">
+                <comment>&#228;&#184;&#138;&#232;&#175;&#190;&#230;&#151;&#182;&#230;&#174;&#181;</comment>
+            </column>
+        </property>
+        <set name="classTables" table="class_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="class_time" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassTable" />
+        </set>
+    </class>
+</hibernate-mapping>

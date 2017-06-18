@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.ClassHour" table="class_hour" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="com.yaodingjiaoyu.datebase.pojo.Student" fetch="join">
+            <column name="student" not-null="true" />
+        </many-to-one>
+        <many-to-one name="courseType" class="com.yaodingjiaoyu.datebase.pojo.CourseType" fetch="join">
+            <column name="course_type" not-null="true" />
+        </many-to-one>
+        <property name="allHour" type="int">
+            <column name="all_hour" not-null="true" />
+        </property>
+        <property name="lastHour" type="int">
+            <column name="last_hour" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

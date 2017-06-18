@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Probability" table="probability" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true">
+                <comment>&#229;&#164;&#167;&#239;&#188;&#140;&#228;&#184;&#173;&#229;&#176;&#143;&#229;&#143;&#175;&#232;&#131;&#189;&#230;&#128;&#167;&#232;&#161;&#168;</comment>
+            </column>
+        </property>
+        <set name="exampleses" table="examples" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="probability" not-null="true">
+                    <comment>&#229;&#143;&#175;&#232;&#131;&#189;&#230;&#128;&#167;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Examples" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Channel" table="channel" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true">
+                <comment>&#230;&#184;&#160;&#233;&#129;&#147;</comment>
+            </column>
+        </property>
+        <set name="exampleses" table="examples" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="channel" not-null="true">
+                    <comment>&#230;&#157;&#165;&#230;&#186;&#144;&#229;&#144;&#141;&#231;&#167;&#176;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Examples" />
+        </set>
+    </class>
+</hibernate-mapping>

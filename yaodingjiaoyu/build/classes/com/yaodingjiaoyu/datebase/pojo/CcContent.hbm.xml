@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.CcContent" table="cc_content" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="examples" class="com.yaodingjiaoyu.datebase.pojo.Examples" fetch="join">
+            <column name="examples" not-null="true">
+                <comment>&#228;&#190;&#139;&#229;&#173;&#144;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="stuff" class="com.yaodingjiaoyu.datebase.pojo.Stuff" fetch="join">
+            <column name="stuff" not-null="true" />
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="join">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <property name="insertTime" type="timestamp">
+            <column name="insert_time" length="19" not-null="true">
+                <comment>&#230;&#143;&#146;&#229;&#133;&#165;&#230;&#151;&#182;&#233;&#151;&#180;</comment>
+            </column>
+        </property>
+        <property name="contents" type="string">
+            <column name="contents" length="500" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

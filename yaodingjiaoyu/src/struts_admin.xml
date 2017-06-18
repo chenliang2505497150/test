@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="admin" extends="struts-default" namespace="/">
+
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="com.yaodingjiaoyu.interceptor.LoginInterceptor" />
+			<interceptor name="PowerInterceptor"
+				class="com.yaodingjiaoyu.interceptor.PowerInterceptor" />
+			<interceptor name="FormatInterceptor"
+				class="com.yaodingjiaoyu.interceptor.FormatInterceptor" />
+
+
+
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor-stack name="format-stack">
+				<interceptor-ref name="FormatInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 重新定义默认拦截器 -->
+		<default-interceptor-ref name="mydefault" />
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="building" type="redirect">/build/building.jsp</result>
+		</global-results>
+
+
+
+		<action name="admin" class="admin_main_action">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+
+		<action name="admin_stuff_manager" class="admin_stuff_manager">
+			<result type="redirect" name="admin_stuff_manager_1">admin_stuff_manager_1</result>
+		</action>
+
+		<action name="admin_stuff_manager_1" class="admin_create_stuff">
+			<result name="success">/admin/admin_stuff_manager_1.jsp</result>
+		</action>
+
+		<action name="admin_examples" class="admin_examples">
+			<result type="redirect" name="admin_examples_1">admin_examples_1</result>
+			<result type="redirect" name="admin_examples_2">admin_examples_2</result>
+			<result type="redirect" name="admin_examples_3">admin_examples_3</result>
+		</action>
+
+		<action name="admin_stuinfo" class="admin_student">
+			<result type="redirect" name="admin_stuinfo_1">admin_stuinfo_1</result>
+			<result type="redirect" name="admin_stuinfo_2">admin_stuinfo_2</result>
+			<result type="redirect" name="admin_stuinfo_3">admin_stuinfo_3</result>
+		</action>
+
+		<action name="admin_hetong" class="admin_hetong">
+			<result type="redirect" name="admin_hetong_1">admin_hetong_1</result>
+		</action>
+
+		<action name="admin_classtable" class="admin_classtable">
+			<result type="redirect" name="admin_classtable_1">admin_classtable_1</result>
+		</action>
+		<!-- 合同的各个栏目 -->
+		<action name="admin_hetong_1" class="admin_hetong_1">
+			<result name="success">/admin/admin_hetong_1.jsp</result>
+
+		</action>
+
+		<action name="change_hetong" class="admin_change_hetong">
+			<result name="success">/admin/admin_change_hetong.jsp</result>
+
+		</action>
+
+		<action name="admin_search_hetong" class="admin_search_hetong">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_getcr_cc_List" class="admin_getcr_ccList_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_change_hetong_ajax" class="admin_change_hetong_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="delete_hetong" class="admin_delete_hetong_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<!-- /合同的各个栏目 -->
+
+
+		<!-- 例子库的各个栏目 -->
+		<action name="admin_examples_1" class="admin_examples_1">
+			<result name="success">/admin/admin_examples_1.jsp</result>
+		</action>
+		<action name="admin_examples_2" class="admin_examples_2">
+			<result name="success">/admin/admin_examples_2.jsp</result>
+		</action>
+		<action name="admin_examples_3" class="admin_examples_3">
+			<result name="success">/admin/admin_examples_3.jsp</result>
+		</action>
+
+		<action name="admin_examples_change" class="admin_change_example">
+			<result name="success">/admin/admin_examples_change.jsp</result>
+		</action>
+		<!-- /例子库的各个栏目 -->
+
+		<!-- 例子库的Ajax -->
+		<action name="doUpload" class="admin_examples_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="doUploadFile" class="admin_examples_file_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_search_examples" class="admin_search_examples_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_search_cc_content" class="admin_search_ccContent_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_get_salerList" class="admin_getSalerList_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_delete_examples" class="admin_examples_delete_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_change_example" class="admin_change_example_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<!-- ／例子库的Ajax -->
+
+
+		<!-- 学员管理的各个栏目 -->
+		<action name="admin_stuinfo_1" class="admin_stuinfo_1">
+			<result name="success">/admin/admin_stuinfo_1.jsp</result>
+		</action>
+		<action name="admin_stuinfo_2" class="admin_stuinfo_2">
+			<result name="success">/admin/admin_stuinfo_2.jsp</result>
+		</action>
+
+		<action name="admin_change_student" class="admin_change_student">
+			<result name="success">/admin/admin_change_student.jsp</result>
+		</action>
+
+		<action name="admin_search_student" class="admin_search_student">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_getcr_tr_List" class="admin_getcr_trList_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_search_class_content" class="admin_search_classContent_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_change_student_ajax" class="admin_change_student_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+
+		<!-- /学员管理的各个栏目 -->
+
+		<!-- 学员课表管理的各个栏目 -->
+		<action name="admin_classtable_1" class="admin_classtable_1">
+			<result name="success">/admin/admin_classtable_1.jsp</result>
+		</action>
+
+		<action name="admin_search_classtable" class="admin_search_classtable_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+		<action name="admin_delete_classtable" class="admin_delete_classtable">
+			<interceptor-ref name="format-stack" />
+		</action>
+
+		<!-- /学员课表管理的各个栏目 -->
+		
+		<action name="admin_add_stuff" class="admin_create_stuff_ajax">
+			<interceptor-ref name="format-stack" />
+		</action>
+	</package>
+</struts> 

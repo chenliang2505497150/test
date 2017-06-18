@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Stuff" table="stuff" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="job" class="com.yaodingjiaoyu.datebase.pojo.Job" fetch="join">
+            <column name="job" not-null="true" />
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="join">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="10" not-null="true" />
+        </property>
+        <property name="idCard" type="string">
+            <column name="ID_card" length="20" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="20" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="400" not-null="true" />
+        </property>
+        <property name="jingjiPhone" type="string">
+            <column name="jingji_phone" length="20" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="20" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="40" not-null="true" />
+        </property>
+        <property name="power" type="string">
+            <column name="power" length="10" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true">
+                <comment>0&#230;&#156;&#170;&#229;&#134;&#187;&#231;&#187;&#147;1&#229;&#183;&#178;&#229;&#134;&#187;&#231;&#187;&#147;</comment>
+            </column>
+        </property>
+        <property name="partTime" type="int">
+            <column name="part_time" not-null="true">
+                <comment>0&#229;&#133;&#168;&#232;&#129;&#140;1&#229;&#133;&#188;&#232;&#129;&#140;</comment>
+            </column>
+        </property>
+        <set name="ccPlans" table="cc_plan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CcPlan" />
+        </set>
+        <set name="crPlans" table="cr_plan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CrPlan" />
+        </set>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Student" />
+        </set>
+        <set name="classContents" table="class_content" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassContent" />
+        </set>
+        <set name="exampleses" table="examples" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Examples" />
+        </set>
+        <set name="ccContents" table="cc_content" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CcContent" />
+        </set>
+        <set name="hetongs" table="hetong" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Hetong" />
+        </set>
+        <set name="classTables" table="class_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuff" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassTable" />
+        </set>
+    </class>
+</hibernate-mapping>

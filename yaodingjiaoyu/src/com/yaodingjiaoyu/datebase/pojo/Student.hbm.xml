@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Student" table="student" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="stuff" class="com.yaodingjiaoyu.datebase.pojo.Stuff" fetch="join">
+            <column name="stuff" />
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="join">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <many-to-one name="level" class="com.yaodingjiaoyu.datebase.pojo.Level" fetch="join">
+            <column name="level" not-null="true">
+                <comment>&#229;&#185;&#180;&#231;&#186;&#167;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+            </column>
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="10" not-null="true" />
+        </property>
+        <property name="birthday" type="date">
+            <column name="birthday" length="10" not-null="true" />
+        </property>
+        <property name="school" type="string">
+            <column name="school" length="200" not-null="true" />
+        </property>
+        <property name="phone1" type="string">
+            <column name="phone1" length="20" />
+        </property>
+        <property name="phone2" type="string">
+            <column name="phone2" length="20" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="400" not-null="true" />
+        </property>
+        <property name="parentName" type="string">
+            <column name="parent_name" length="100" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true">
+                <comment>
+                0&#230;&#156;&#170;&#229;&#136;&#134;&#233;&#133;&#141;&#231;&#143;&#173;&#228;&#184;&#187;&#228;&#187;&#187;1&#229;&#183;&#178;&#229;&#136;&#134;&#233;&#133;&#141;</comment>
+            </column>
+        </property>
+        <property name="allHour" type="int">
+            <column name="all_hour" not-null="true">
+                <comment>
+                &#230;&#128;&#187;&#232;&#175;&#190;&#230;&#151;&#182;&#239;&#188;&#140;1V1&#229;&#146;&#140;1V3&#231;&#173;&#137;&#229;&#138;&#160;&#229;&#156;&#168;&#228;&#184;&#128;&#232;&#181;&#183;</comment>
+            </column>
+        </property>
+        <property name="lastHour" type="int">
+            <column name="last_hour" not-null="true">
+                <comment>1V1&#239;&#188;&#140;1V3&#231;&#154;&#132;&#230;&#128;&#187;&#229;&#137;&#169;&#228;&#189;&#153;&#232;&#175;&#190;&#230;&#151;&#182;</comment>
+            </column>
+        </property>
+        <property name="presentHour" type="int">
+            <column name="present_hour" not-null="true">
+                <comment>&#232;&#181;&#160;&#233;&#128;&#129;&#232;&#175;&#190;&#230;&#151;&#182;</comment>
+            </column>
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="20" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="40" not-null="true" />
+        </property>
+        <property name="power" type="string">
+            <column name="power" length="10" not-null="true">
+                <comment>&#229;&#173;&#166;&#231;&#148;&#159;&#230;&#157;&#131;&#233;&#153;&#144;&#229;&#155;&#186;&#229;&#174;&#154;&#228;&#184;&#186;ss</comment>
+            </column>
+        </property>
+        <property name="lastTime" type="timestamp">
+            <column name="last_time" length="19" not-null="true" />
+        </property>
+        <property name="nowClass" type="int">
+            <column name="now_class" not-null="true">
+                <comment>&#231;&#143;&#173;&#231;&#186;&#167;</comment>
+            </column>
+        </property>
+        <set name="testResults" table="test_result" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.TestResult" />
+        </set>
+        <set name="classHours" table="class_hour" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassHour" />
+        </set>
+        <set name="crPlans" table="cr_plan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CrPlan" />
+        </set>
+        <set name="hetongs" table="hetong" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Hetong" />
+        </set>
+        <set name="classContents" table="class_content" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassContent" />
+        </set>
+        <set name="classTables" table="class_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassTable" />
+        </set>
+    </class>
+</hibernate-mapping>

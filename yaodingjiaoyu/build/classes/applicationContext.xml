@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd">   
+	
+	 
+    <!-- 定义数据源 -->
+     
+	<!-- 定义使用C3P0连接池的数据源 -->  
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">  
+        <!-- 指定连接数据库的JDBC驱动 -->  
+        <property name="driverClass">  
+            <value>com.mysql.jdbc.Driver</value>  
+         </property>  
+        <!-- 连接数据库所用的URL -->  
+        <property name="jdbcUrl">  
+            <value>jdbc:mysql://localhost:3306/yding?useUnicode=true&amp;characterEncoding=utf-8</value>  
+        </property>  
+        <!-- 连接数据库的用户名 -->  
+        <property name="user">  
+            <value>root</value>  
+        </property>  
+        <!-- 连接数据库的密码 -->  
+        <property name="password">  
+            <value>Dandan269132</value>  
+        </property>  
+        <!-- 设置数据库连接池的最大连接数 -->  
+        <property name="maxPoolSize">  
+            <value>20</value>  
+        </property>  
+        <!-- 设置数据库连接池的最小连接数 -->  
+        <property name="minPoolSize">  
+            <value>2</value>  
+        </property>  
+        <!-- 设置数据库连接池的初始化连接数 -->  
+        <property name="initialPoolSize">  
+            <value>2</value>  
+        </property>  
+        <!-- 设置数据库连接池的连接的最大空闲时间,单位为秒 -->  
+        <property name="maxIdleTime">  
+            <value>20</value>  
+        </property>  
+    </bean> 
+
+  
+    <bean id = "sessionFactory" class = "org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    	<property name="dataSource" ref = "dataSource"/>    
+    	<!-- 指定hibernate所有映射文件路径 -->
+    
+ 
+    	  
+    	<property name = "mappingResources">
+			<list>
+				<value>com/yaodingjiaoyu/datebase/pojo/CampusPrice.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Channel.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Stuff.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Campus.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/CcContent.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/ClassContent.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Probability.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/ClassTable.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/ClassTime.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/CourseType.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Hetong.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/HtProperty.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Job.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Level.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Student.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Suggest.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Subject.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/Examples.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/CcPlan.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/CrPlan.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/ClassHour.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/TestResult.hbm.xml</value>
+				<value>com/yaodingjiaoyu/datebase/pojo/HetongType.hbm.xml</value>
+			</list>    
+    	</property>
+
+    	 
+    	
+    	<property name = "hibernateProperties">
+    		<props>
+    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+    			<prop key = "show_sql">true</prop>
+    			<prop key = "hibernate.hbm2ddl.auto">update</prop>
+    			<prop key="hibernate.connection.release_mode">after_transaction</prop>
+    			<prop key = "maxPoolSize">20</prop>
+    			<prop key = "minPoolSize">2</prop>
+    		</props>
+    	</property>
+    </bean>
+   
+    
+	<!-- 存储item_info的Map集合,用于注入给GetItemInfoServiceImpl -->
+	<bean id = "item_info_map" class = "java.util.HashMap"/>
+	<!-- 存储年级表，可能性等等表 -->
+	<bean id = "level" class = "java.util.HashMap"/>
+	<bean id = "probability" class = "java.util.HashMap"/>
+	<bean id = "channel" class = "java.util.HashMap"/>
+	<bean id = "campus" class = "java.util.HashMap"/>
+	<bean id = "youxiao" class = "java.util.HashMap"/>
+	<bean id = "zhuangtai" class = "java.util.HashMap"/>
+	
+	
+   
+   <import resource="applicationContext-Dao.xml"/>
+   <import resource="applicationContext-Service.xml"/>
+    
+    <!-- 配置版本的请求 -->
+    <bean id = "version" class = "com.yaodingjiaoyu.action.VersionAction"/>
+   <!-- 业绩的配置 -->
+   <bean id = "achieve_manager" class = "com.yaodingjiaoyu.action.Achievement_Manager"/>
+   <bean id = "cc_achieve" class = "com.yaodingjiaoyu.action.Achievement_CC_Action">
+   		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+   		<property name = "achievementService" ref = "achievementServiceImpl"/>
+   		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+   		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+   </bean>
+   
+   <bean id = "cc_achieve_ajax" class = "com.yaodingjiaoyu.action.generalAjax.Achievement_CC_Ajax">
+   		<property name = "achievementService" ref = "achievementServiceImpl"/>
+   		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+   		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+   </bean>
+   
+   <bean id = "cr_achieve" class = "com.yaodingjiaoyu.action.Achievement_CR_Action" >
+   		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+   		<property name = "achievementService" ref = "achievementServiceImpl"/>
+   		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+   		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+   </bean>
+   
+   <bean id = "cr_achieve_ajax" class = "com.yaodingjiaoyu.action.generalAjax.Achievement_CR_Ajax">
+   		<property name = "achievementService" ref = "achievementServiceImpl"/>
+   		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+   		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+   </bean>
+   
+   <bean id = "tr_achieve" class = "com.yaodingjiaoyu.action.Achievement_TR_Action" >
+   		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+   		<property name = "achievementService" ref = "achievementServiceImpl"/>
+   		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+   		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+   </bean>
+   
+   <bean id = "tr_achieve_ajax" class = "com.yaodingjiaoyu.action.generalAjax.Achievement_TR_Ajax">
+   		<property name = "achievementService" ref = "achievementServiceImpl"/>
+   		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+   		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+   </bean>
+   
+   <!-- 									action										 -->
+   <bean id = "login_fail" class = "com.yaodingjiaoyu.action.Login_Fail"/>
+   
+    <bean id = "login_action" class = "com.yaodingjiaoyu.action.LoginAction">
+    	<property name = "stuffService" ref = "stuffSerImpl"/>
+    	<property name = "studentService" ref = "studentSerImpl"/>
+    	<property name = "encryptionService" ref = "encryptionServiceImpl"/>
+    	<property name ="power" value ="fail"/>
+    </bean>
+    
+    <bean id = "logout_action" class = "com.yaodingjiaoyu.action.LogoutAction"></bean>
+    
+    <bean id="changePassword_Ajax" class="com.yaodingjiaoyu.action.ChangePassword_Ajax">
+		<property name="stuffService" ref="stuffSerImpl" />
+		<property name="studentService" ref="studentSerImpl" />
+		<property name ="encryptionService" ref = "encryptionServiceImpl"/>
+	</bean>
+    
+    <bean id="userInformation_action" class="com.yaodingjiaoyu.action.ChangeInformationAction">
+		<property name="stuffService" ref="stuffSerImpl" />
+		<property name="studentService" ref="studentSerImpl" />
+	</bean>
+	
+	<bean id = "changeStuffInfo_Ajax" class = "com.yaodingjiaoyu.action.generalAjax.ChangeStuffInfo_Ajax">
+    	<property name = "stuffService" ref = "stuffSerImpl"/>
+    </bean>
+    
+    <bean id = "unitPrice_ajax" class = "com.yaodingjiaoyu.action.generalAjax.GetUnitPriceAjax">
+    	<property name = "unitPriceService" ref = "unitPriceServiceImpl"/>
+    </bean>
+    
+    <bean id = "getClassHourAjax" class = "com.yaodingjiaoyu.action.generalAjax.GetClassHourAjax">
+    	<property name = "classHourService" ref = "classHourServiceImpl"/>
+    </bean>
+    
+    <bean id = "examples_detail" class = "com.yaodingjiaoyu.action.generalAjax.Examples_detail_Ajax">
+		<property name = "examplesService" ref = "examplesServiceImpl"/>
+		<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "detail_hetong" class = "com.yaodingjiaoyu.action.generalAjax.HetongDetail_Ajax">
+		<property name = "transLateService" ref = "translateServiceImpl"/>
+		<property name = "hetongService" ref = "hetongServiceImpl"/>
+    </bean>
+    
+    <bean id = "getcrList_ajax" class = "com.yaodingjiaoyu.action.generalAjax.GetCr_Ajax">
+		<property name = "pageListService" ref = "pagelistServiceImpl"/>
+		<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "student_detail_ajax" class = "com.yaodingjiaoyu.action.generalAjax.Student_detail_Ajax">
+    	<property name = "studentService" ref = "studentSerImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+   
+   <import resource="applicationContext-cr.xml"/>
+   <import resource="applicationContext-admin.xml"/>
+   <import resource="applicationContext-sd.xml"/>
+   <import resource="applicationContext-tr.xml"/>
+   <import resource="applicationContext-cc.xml"/>
+   <import resource="applicationContext-ss.xml"/>
+
+</beans>

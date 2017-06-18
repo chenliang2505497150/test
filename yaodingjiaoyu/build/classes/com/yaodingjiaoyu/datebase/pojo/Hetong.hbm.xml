@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-25 16:42:37 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Hetong" table="hetong" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="com.yaodingjiaoyu.datebase.pojo.Student" fetch="join">
+            <column name="student" not-null="true" />
+        </many-to-one>
+        <many-to-one name="stuff" class="com.yaodingjiaoyu.datebase.pojo.Stuff" fetch="join">
+            <column name="stuff" not-null="true" />
+        </many-to-one>
+        <many-to-one name="courseType" class="com.yaodingjiaoyu.datebase.pojo.CourseType" fetch="join">
+            <column name="course_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="htProperty" class="com.yaodingjiaoyu.datebase.pojo.HtProperty" fetch="join">
+            <column name="ht_property" not-null="true">
+                <comment>&#229;&#184;&#184;&#232;&#167;&#132;&#232;&#175;&#190;&#230;&#151;&#182;</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="join">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <many-to-one name="level" class="com.yaodingjiaoyu.datebase.pojo.Level" fetch="join">
+            <column name="level" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subject" class="com.yaodingjiaoyu.datebase.pojo.Subject" fetch="join">
+            <column name="subject" not-null="true" />
+        </many-to-one>
+        <many-to-one name="hetongType" class="com.yaodingjiaoyu.datebase.pojo.HetongType" fetch="join">
+            <column name="hetong_type" not-null="true">
+                <comment>0&#230;&#150;&#176;&#231;&#173;&#190;1&#231;&#187;&#173;&#232;&#180;&#185;</comment>
+            </column>
+        </many-to-one>
+        <property name="hetongNum" type="string">
+            <column name="hetong_num" length="50" not-null="true" />
+        </property>
+        <property name="normalHour" type="int">
+            <column name="normal_hour" not-null="true" />
+        </property>
+        <property name="unitPrice" type="double">
+            <column name="unit_price" precision="22" scale="0" not-null="true">
+                <comment>&#229;&#189;&#147;&#230;&#151;&#182;&#231;&#154;&#132;&#228;&#187;&#183;&#230;&#160;&#188;</comment>
+            </column>
+        </property>
+        <property name="pos" type="double">
+            <column name="pos" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cash" type="double">
+            <column name="cash" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="posNum" type="string">
+            <column name="pos_num" length="40">
+                <comment>pos&#229;&#141;&#149;&#229;&#143;&#183;</comment>
+            </column>
+        </property>
+        <property name="receiptNum" type="string">
+            <column name="receipt_num" length="40">
+                <comment>&#230;&#148;&#182;&#230;&#141;&#174;&#229;&#141;&#149;&#229;&#143;&#183;</comment>
+            </column>
+        </property>
+        <property name="signTime" type="timestamp">
+            <column name="sign_time" length="19" not-null="true" />
+        </property>
+        <property name="remarks" type="string">
+            <column name="remarks" length="500" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true">
+                <comment>
+                &#230;&#152;&#175;&#229;&#144;&#166;&#229;&#174;&#161;&#230;&#160;&#184;0&#230;&#156;&#170;&#229;&#174;&#161;&#230;&#160;&#184;1&#229;&#183;&#178;&#229;&#174;&#161;&#230;&#160;&#184;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.TestResult" table="test_result" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="com.yaodingjiaoyu.datebase.pojo.Student" fetch="select">
+            <column name="student" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subject" class="com.yaodingjiaoyu.datebase.pojo.Subject" fetch="select">
+            <column name="subject" not-null="true" />
+        </many-to-one>
+        <property name="course" type="int">
+            <column name="course" not-null="true">
+                <comment>&#229;&#136;&#134;&#230;&#149;&#176;</comment>
+            </column>
+        </property>
+        <property name="testTime" type="timestamp">
+            <column name="test_time" length="19" not-null="true" />
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="200">
+                <comment>&#229;&#164;&#135;&#230;&#179;&#168;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

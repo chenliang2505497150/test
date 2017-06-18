@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.CcPlan" table="cc_plan" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="examples" class="com.yaodingjiaoyu.datebase.pojo.Examples" fetch="select">
+            <column name="examples" not-null="true" />
+        </many-to-one>
+        <many-to-one name="stuff" class="com.yaodingjiaoyu.datebase.pojo.Stuff" fetch="select">
+            <column name="stuff" not-null="true" />
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="select">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <property name="planTime" type="timestamp">
+            <column name="plan_time" length="19" not-null="true">
+                <comment>&#232;&#174;&#161;&#229;&#136;&#146;&#231;&#154;&#132;&#230;&#151;&#182;&#233;&#151;&#180;</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="500" not-null="true">
+                <comment>&#232;&#174;&#161;&#229;&#136;&#146;&#231;&#154;&#132;&#229;&#134;&#133;&#229;&#174;&#185;</comment>
+            </column>
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

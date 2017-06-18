@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>yaodingjiaoyu</display-name>
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/build/building.jsp</location>
+	</error-page>
+	
+	<context-param>
+		<description>打开更新提醒</description>
+		<param-name>OPEN_REMIND</param-name>
+		<param-value>
+	         true
+	    </param-value>
+	</context-param>
+	
+	<context-param>
+		<description>更新提醒条数</description>
+		<param-name>REMIND_NUM</param-name>
+		<param-value>
+	         1
+	    </param-value>
+	</context-param>
+	
+	<context-param>
+		<description>系统信息</description>
+		<param-name>SYS_MESSAGE</param-name>
+		<param-value>
+	         当前系统已是最新版本,暂时没有系统信息!
+	    </param-value>
+	</context-param>
+	
+	<context-param>
+		<description>系统版本</description>
+		<param-name>SYS_VERSION</param-name>
+		<param-value>
+	         5.2.9
+	    </param-value>
+	</context-param>
+
+	<context-param>
+		<description>文件上传地址</description>
+		<param-name>FILE_UPLOAD</param-name>
+		<param-value>
+	         temp
+	    </param-value>
+	</context-param>
+
+	<context-param>
+		<description>每页最大条数</description>
+		<param-name>PAGE_MAX</param-name>
+		<param-value>
+	         10
+	    </param-value>
+	</context-param>
+
+	<context-param>
+		<description>每节课的课时</description>
+		<param-name>CLASS_HOUR</param-name>
+		<param-value>
+	         3
+	    </param-value>
+	</context-param>
+
+	<context-param>
+		<description>SESSION失效时间</description>
+		<param-name>SESSION_DESTORY_TIME</param-name>
+		<param-value>
+	         3600
+	    </param-value>
+	</context-param>
+
+
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext*.xml</param-value>
+	</context-param>
+
+
+
+
+
+</web-app>

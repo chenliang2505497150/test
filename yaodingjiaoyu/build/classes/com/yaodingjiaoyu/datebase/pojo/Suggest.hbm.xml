@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Suggest" table="suggest" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="classTable" class="com.yaodingjiaoyu.datebase.pojo.ClassTable" fetch="select">
+            <column name="class_table" not-null="true">
+                <comment>&#232;&#175;&#190;&#232;&#161;&#168;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="select">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <property name="pingfen" type="int">
+            <column name="pingfen" not-null="true">
+                <comment>1-5&#229;&#136;&#134;</comment>
+            </column>
+        </property>
+        <property name="suggestion" type="string">
+            <column name="suggestion" length="400" not-null="true">
+                <comment>&#232;&#175;&#132;&#232;&#174;&#186;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

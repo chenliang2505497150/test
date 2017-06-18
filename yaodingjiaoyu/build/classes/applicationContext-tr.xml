@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd">   
+	
+	 
+   
+   <!-- tr -->	
+    <bean id = "tr_main_action" class = "com.yaodingjiaoyu.action.Tr_init_Main" >
+    	<property name = "stuffService" ref = "stuffSerImpl"/>
+    </bean>
+    
+    
+    <!-- 学员管路 -->
+     <bean id = "tr_stuInfo" class = "com.yaodingjiaoyu.action.tr.TrStuManagerAction"/>
+
+    
+    
+   <bean id = "tr_stuinfo_1" class = "com.yaodingjiaoyu.action.tr.Tr_StuInfo_Action1">
+    	<property name = "searchStudentService" ref = "search_StudentServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    </bean>
+    
+    <bean id = "tr_student_detail" class = "com.yaodingjiaoyu.action.tr.Tr_StudentDetail_Action">
+    	<property name = "studentService" ref = "studentSerImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "searchStudentService" ref = "search_StudentServiceImpl"/>
+    </bean>
+    
+    
+    <bean id = "tr_addClassContent" class = "com.yaodingjiaoyu.action.tr.Tr_AddContent_Action">
+    	<property name = "searchClassContentService" ref = "class_contentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+   
+    <!-- Ajax -->
+     <bean id = "tr_search_student" class = "com.yaodingjiaoyu.ajax.tr.TrSearchStudent_Ajax">
+    	<property name = "searchStudentService" ref = "search_StudentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    </bean>
+    
+    
+    <bean id = "tr_get_simple_content_ajax" class = "com.yaodingjiaoyu.ajax.tr.Tr_GetSimpleContent_Ajax">
+    	<property name = "searchClassContentService" ref = "class_contentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    <!-- /Ajax -->
+    
+    <!-- ／学员管路 -->
+    
+    
+    
+     <!-- 课表管理 -->
+    <bean id = "tr_classtable" class = "com.yaodingjiaoyu.action.tr.TrClasstableManagerAction"/>
+    
+    <bean id = "tr_classtable_1" class = "com.yaodingjiaoyu.action.tr.Tr_Classtable_Action1">
+    	<property name = "dayService" ref = "dayServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "pageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "stuffService" ref = "stuffSerImpl"/>
+    </bean>
+    
+    <bean id = "tr_classtable_2" class = "com.yaodingjiaoyu.action.tr.Tr_Classtable_Action2">
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "pageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    </bean>
+  
+    <bean id = "tr_search_classtable" class = "com.yaodingjiaoyu.ajax.tr.Tr_ClassTable_Ajax">
+    	<property name = "dayService" ref = "dayServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "pageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "stuffService" ref = "stuffSerImpl"/>
+    </bean>
+    
+    <bean id = "tr_search_classtable_list" class = "com.yaodingjiaoyu.ajax.tr.Tr_SearchClassTableList_Ajax">
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    </bean>
+    
+    <!-- /课表管理 -->
+    
+    <!-- /tr -->	
+
+</beans>

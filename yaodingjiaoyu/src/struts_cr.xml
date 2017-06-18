@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="cr" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="com.yaodingjiaoyu.interceptor.LoginInterceptor" />
+			<interceptor name="PowerInterceptor"
+				class="com.yaodingjiaoyu.interceptor.PowerInterceptor" />
+			<interceptor name="FormatInterceptor"
+				class="com.yaodingjiaoyu.interceptor.FormatInterceptor" />
+			
+				
+				
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor-stack name="format-stack">
+				<interceptor-ref name="FormatInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 重新定义默认拦截器 -->
+		<default-interceptor-ref name="mydefault" />
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="building" type="redirect">/build/building.jsp</result>
+		</global-results>
+		
+		
+
+		<action name="cr" class="cr_main_action">
+			<result name="success">/cr/cr.jsp</result>
+
+		</action>
+		<action name="cr_stuinfo" class="cr_stuInfo">
+			<result type="redirect" name="cr_stuinfo_1">cr_stuinfo_1</result>
+			<result type="redirect" name="cr_stuinfo_2">cr_stuinfo_2</result>
+		</action>
+
+		<action name="cr_hetong" class="cr_hetong">
+			<result type="redirect" name="cr_hetong_1">cr_hetong_1</result>
+		</action>
+
+		<action name="cr_classtable" class="cr_classtable">
+			<result type="redirect" name="cr_classtable_1">cr_classtable_1</result>
+			<result type="redirect" name="cr_classtable_2">cr_classtable_2</result>
+		</action>
+		<!-- 学员管理 -->
+		<action name="cr_stuinfo_1" class="cr_stuinfo_1">
+			<result name="success">/cr/cr_stuinfo_1.jsp</result>
+
+		</action>
+		<action name="cr_stuinfo_2" class="cr_stuinfo_2">
+			<result name="success">/cr/cr_stuinfo_2.jsp</result>
+
+		</action>
+
+		<action name="cr_add_content" class="cr_addClassContent">
+			<result name="success">/cr/cr_add_content.jsp</result>
+
+		</action>
+
+		<action name="cr_add_hetong" class="cr_add_hetong">
+			<result name="success">/stu_xufei.jsp</result>
+
+		</action>
+		<!-- /学员管理 -->
+
+
+		<!-- 处理学员信息Ajax请求的接口 -->
+		<action name="cr_search_stu" class="cr_search_student">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cr_search_class_content" class="cr_searchClassContent_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cr_add_content_ajax" class="cr_addClassContent_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cr_get_simple_content" class="cr_get_simple_content_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cr_get_price" class="cr_get_price">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cr_add_hetong_ajax" class="cr_add_hetong_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /处理学员信息Ajax请求的接口 -->
+
+
+		<!-- 合同管理 -->
+		<action name="cr_hetong_1" class="cr_hetong_1">
+			<result name="success">/cr/cr_hetong_1.jsp</result>
+
+		</action>
+		<!-- /合同管理 -->
+
+		<!-- 处理合同信息的Ajax -->
+		<action name="cr_search_hetong" class="cr_search_hetong">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /处理合同信息的Ajax -->
+
+		<!-- 课表管理 -->
+		<action name="cr_classtable_1" class="cr_classtable_1">
+			<result name="success">/cr/cr_classtable_1.jsp</result>
+		</action>
+		
+		<action name="cr_classtable_2" class="cr_classtable_2">
+			<result name="success">/cr/cr_classtable_2.jsp</result>
+		</action>
+		
+		<!-- 处理课表的Ajax -->
+		<action name="cr_search_classtable" class="cr_search_classtable">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_search_classlist" class="cr_search_classtable_list">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_add_classtable" class="cr_add_classtable">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_delete_classtable" class="cr_delete_classtable">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_delete_classtable_list" class="cr_delete_classtable_list">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_confirm_classtable" class="cr_confirm_classtable">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_confirm_classtable_list" class="cr_confirm_classtable_list_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_add_classtable_remark" class="cr_add_classtable_remark">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /处理课表的Ajax -->
+
+		<!-- /课表管理 -->
+	</package>
+
+</struts> 

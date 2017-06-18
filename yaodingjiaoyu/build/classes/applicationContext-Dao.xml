@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd">   
+	
+	 
+   
+  <!-- 										dao											 -->
+   
+    <bean id = "stuffDaoImpl" class = "com.yaodingjiaoyu.daoImpl.StuffDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "studentDaoImpl" class = "com.yaodingjiaoyu.daoImpl.StudentDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "search_studentDaoImpl" class = "com.yaodingjiaoyu.daoImpl.SearchStudentDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>	
+    
+    <bean id = "pagelistDaoImpl" class = "com.yaodingjiaoyu.daoImpl.PageListDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>	
+    
+    <bean id = "examplesDaoImpl" class = "com.yaodingjiaoyu.daoImpl.ExamplesDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>	
+
+    
+    <bean id = "cc_contentDaoImpl" class = "com.yaodingjiaoyu.daoImpl.CcContentDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+   
+    
+    <bean id = "class_contentDaoImpl" class = "com.yaodingjiaoyu.daoImpl.ClassContentDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    
+    
+     <bean id = "hetongDaoImpl" class = "com.yaodingjiaoyu.daoImpl.HetongDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "unit_priceDaoImpl" class = "com.yaodingjiaoyu.daoImpl.UnitPriceDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    <bean id = "classHourDaoImpl" class = "com.yaodingjiaoyu.daoImpl.ClassHourDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    <bean id = "courseTypeDaoImpl" class = "com.yaodingjiaoyu.daoImpl.CourseTypeDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "classTableDaoImpl" class = "com.yaodingjiaoyu.daoImpl.ClassTableDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "jobDaoImpl" class = "com.yaodingjiaoyu.daoImpl.JobDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "searchStuffDaoImpl" class = "com.yaodingjiaoyu.daoImpl.SearchStuffDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+    <bean id = "achievementDaoImpl" class = "com.yaodingjiaoyu.daoImpl.AchievementDaoImpl">
+    	<property name = "sessionFactory" ref = "sessionFactory"/>
+    </bean>
+    
+</beans>

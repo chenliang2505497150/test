@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-27 18:10:43 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Level" table="level" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true" />
+        </property>
+        <set name="exampleses" table="examples" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="level" not-null="true">
+                    <comment>&#229;&#185;&#180;&#231;&#186;&#167;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Examples" />
+        </set>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="level" not-null="true">
+                    <comment>&#229;&#185;&#180;&#231;&#186;&#167;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Student" />
+        </set>
+        <set name="classTables" table="class_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="level" not-null="true">
+                    <comment>&#229;&#185;&#180;&#231;&#186;&#167;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassTable" />
+        </set>
+        <set name="hetongs" table="hetong" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="level" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Hetong" />
+        </set>
+    </class>
+</hibernate-mapping>

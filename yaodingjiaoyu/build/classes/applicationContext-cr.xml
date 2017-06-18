@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+
+
+	<!-- cr -->
+	<bean id="cr_main_action" class="com.yaodingjiaoyu.action.Cr_init_Main">
+		<property name="stuffService" ref="stuffSerImpl" />
+	</bean>
+
+
+	<bean id="cr_stuInfo" class="com.yaodingjiaoyu.action.cr.CrStuManagerAction" />
+
+	<bean id="cr_search_student" class="com.yaodingjiaoyu.ajax.cr.CrSearchStudent_Ajax">
+		<property name="searchStudentService" ref="search_StudentServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="loadPageListService" ref="pagelistServiceImpl" />
+	</bean>
+
+	<bean id="cr_stuinfo_1" class="com.yaodingjiaoyu.action.cr.Cr_StuInfo_Action1">
+		<property name="searchStudentService" ref="search_StudentServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="loadPageListService" ref="pagelistServiceImpl" />
+	</bean>
+
+	<bean id="cr_stuinfo_2" class="com.yaodingjiaoyu.action.cr.Cr_StuInfo_Action2">
+		<property name="searchClassContentService" ref="class_contentServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="loadPageListService" ref="pagelistServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="stuffService" ref="stuffSerImpl" />
+	</bean>
+
+	<bean id="cr_searchClassContent_ajax" class="com.yaodingjiaoyu.ajax.cr.CrSearchClassContent_Ajax">
+		<property name="searchClassContentService" ref="class_contentServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+	</bean>
+
+
+	<bean id="cr_addClassContent" class="com.yaodingjiaoyu.action.cr.Cr_AddContent_Action">
+		<property name="searchClassContentService" ref="class_contentServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+	</bean>
+
+	<bean id="cr_addClassContent_ajax" class="com.yaodingjiaoyu.ajax.cr.Cr_AddContent_Ajax">
+		<property name="classContentService" ref="class_contentServiceImpl" />
+		<property name="stuffService" ref="stuffSerImpl" />
+	</bean>
+
+	<bean id="cr_get_simple_content_ajax" class="com.yaodingjiaoyu.ajax.cr.Cr_GetSimpleContent_Ajax">
+		<property name="searchClassContentService" ref="class_contentServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+	</bean>
+
+
+
+	<bean id="cr_add_hetong" class="com.yaodingjiaoyu.action.cr.Cr_AddHetong_Action">
+		<property name="studentService" ref="studentSerImpl" />
+		<property name="unitPriceService" ref="unitPriceServiceImpl" />
+		<property name="loadPageListService" ref="pagelistServiceImpl" />
+	</bean>
+
+	<bean id="cr_get_price" class="com.yaodingjiaoyu.ajax.cr.Cr_GetUnitPrice_Ajax">
+		<property name="studentService" ref="studentSerImpl" />
+		<property name="unitPriceService" ref="unitPriceServiceImpl" />
+	</bean>
+
+	<bean id="cr_add_hetong_ajax" class="com.yaodingjiaoyu.ajax.cr.Cr_AddHetong_Ajax">
+		<property name="studentService" ref="studentSerImpl" />
+		<property name="unitPriceService" ref="unitPriceServiceImpl" />
+		<property name="hetongService" ref="hetongServiceImpl" />
+		<property name="classHourService" ref="classHourServiceImpl" />
+	</bean>
+
+
+	<!-- 合同管理 -->
+	<bean id="cr_hetong" class="com.yaodingjiaoyu.action.cr.CrHetongManagerAction" />
+
+	<bean id="cr_hetong_1" class="com.yaodingjiaoyu.action.cr.Cr_Hetong_Action1">
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="loadPageListService" ref="pagelistServiceImpl" />
+		<property name="searchHetongService" ref="hetongServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+	</bean>
+
+
+	<!-- Ajax -->
+	<bean id="cr_search_hetong" class="com.yaodingjiaoyu.ajax.cr.Cr_SearchHetong_Ajax">
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="searchHetongService" ref="hetongServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+	</bean>
+
+	<bean id="cr_save_hetong" class="com.yaodingjiaoyu.ajax.cr.Cr_SaveHetong_Ajax">
+		<property name="saveStudentService" ref="save_studentServiceImpl" />
+		<property name="saveHetongService" ref="hetongServiceImpl" />
+		<property name="unitPriceService" ref="unitPriceServiceImpl" />
+		<property name="classHourService" ref="classHourServiceImpl" />
+	</bean>
+
+	<!-- /Ajax -->
+	<!-- /合同管理 -->
+
+	<!-- 课表管理 -->
+	<bean id="cr_classtable" class="com.yaodingjiaoyu.action.cr.CrClasstableManagerAction" />
+
+	<bean id="cr_classtable_1" class="com.yaodingjiaoyu.action.cr.Cr_Classtable_Action1">
+		<property name="dayService" ref="dayServiceImpl" />
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="pageListService" ref="pagelistServiceImpl" />
+		<property name="searchStudentService" ref="search_StudentServiceImpl" />
+	</bean>
+	<bean id="cr_classtable_2" class="com.yaodingjiaoyu.action.cr.Cr_Classtable_Action2">
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="pageListService" ref="pagelistServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+	</bean>
+
+	<!-- Ajax -->
+	<bean id="cr_search_classtable" class="com.yaodingjiaoyu.ajax.cr.Cr_SearchClassTable_Ajax">
+		<property name="dayService" ref="dayServiceImpl" />
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="pageListService" ref="pagelistServiceImpl" />
+	</bean>
+
+	<bean id="cr_search_classtable_list" class="com.yaodingjiaoyu.ajax.cr.Cr_SearchClassTableList_Ajax">
+		<property name="getItemInfoService" ref="get_item_infoServiceImpl" />
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="transLateService" ref="translateServiceImpl" />
+		<property name="pageListService" ref="pagelistServiceImpl" />
+		<property name="getResultObjectListService" ref="get_resultobject_listServiceImpl" />
+	</bean>
+
+	<bean id="cr_add_classtable" class="com.yaodingjiaoyu.ajax.cr.Cr_AddClassTable_Ajax">
+		<property name="tableCheckService" ref="tableCheckServiceImpl" />
+		<property name="studentService" ref="studentSerImpl" />
+		<property name="stuffService" ref="stuffSerImpl" />
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="dayService" ref="dayServiceImpl" />
+	</bean>
+
+	<bean id="cr_delete_classtable" class="com.yaodingjiaoyu.ajax.cr.Cr_DeleteClassTable_Ajax">
+		<property name="classTableService" ref="classTableServiceImpl" />
+	</bean>
+
+	<bean id="cr_delete_classtable_list" class="com.yaodingjiaoyu.ajax.cr.Cr_DeleteClassTable_List_Ajax">
+		<property name="classTableService" ref="classTableServiceImpl" />
+	</bean>
+
+	<bean id="cr_confirm_classtable" class="com.yaodingjiaoyu.ajax.cr.Cr_ConfirmClassTable_Ajax">
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="studentService" ref="studentSerImpl" />
+		<property name="classHourService" ref="classHourServiceImpl" />
+	</bean>
+
+	<bean id="cr_confirm_classtable_list_ajax"
+		class="com.yaodingjiaoyu.ajax.cr.Cr_ConfirmClassTable_List_Ajax">
+		<property name="studentService" ref="studentSerImpl" />
+		<property name="classTableService" ref="classTableServiceImpl" />
+		<property name="classHourService" ref="classHourServiceImpl" />
+	</bean>
+
+	<bean id="cr_add_classtable_remark" class="com.yaodingjiaoyu.ajax.cr.Cr_AddRemarkToClassTable_Ajax">
+		<property name="classTableService" ref="classTableServiceImpl" />
+	</bean>
+	<!-- /Ajax -->
+
+
+
+	<!-- /课表管理 -->
+	<!-- /cr -->
+
+</beans>

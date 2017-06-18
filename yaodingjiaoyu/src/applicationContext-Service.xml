@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd">   
+	
+	 
+   
+   <bean id = "encryptionServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.EncryptionServiceImpl" />
+    	
+
+    
+    <bean id = "stuffSerImpl" class = "com.yaodingjiaoyu.ServiceImpl.StuffServiceImpl">
+    	<property name = "userdao" ref = "stuffDaoImpl"/>
+    </bean>
+    
+    <bean id = "studentSerImpl" class = "com.yaodingjiaoyu.ServiceImpl.StudentServiceImpl">
+    	<property name = "userdao" ref = "studentDaoImpl"/>
+    </bean>
+    
+    <bean id = "search_StudentServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.SearchStudentServiceImpl">
+    	<property name = "searchStudent" ref = "search_studentDaoImpl"/>
+    </bean>
+    
+    <bean id = "pagelistServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.PageListServiceImpl">
+    	<property name = "loadPageListDao" ref = "pagelistDaoImpl"/>
+    </bean>
+    
+    <bean id = "examplesServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.ExamplesServiceImpl">
+    	<property name = "save_examples" ref = "examplesDaoImpl"/>
+    </bean>
+    
+    <bean id = "save_upload_fileServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.SaveUploadFileServiceImpl"/>
+    
+    <bean id = "get_item_infoServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.GetItemInfoServiceImpl">
+    	<property name = "item_info" ref = "item_info_map"/>
+    </bean>
+    
+    <bean id = "get_resultobject_listServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.GetResultObjectListServiceImpl"/>
+    
+    <!-- 翻译服务 -->
+    <bean id = "translateServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.TransLateServiceImpl">
+    	<property name = "probability" ref = "probability"/>
+    	<property name = "level" ref = "level"/>
+    	<property name = "channel" ref = "channel"/>
+    	<property name = "youxiao" ref = "youxiao"/>
+    	<property name = "zhuangtai" ref = "zhuangtai"/>
+    	<property name = "campus" ref = "campus"/>
+    	<property name = "dayService" ref = "dayServiceImpl"/>
+	</bean>
+	
+	<bean id = "cc_contentServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.CcContentServiceImpl">
+    	<property name = "search_cc_content_dao" ref = "cc_contentDaoImpl"/>
+    </bean>
+    
+    <bean id = "class_contentServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.ClassContentServiceImpl">
+    	<property name = "search_classContent" ref = "class_contentDaoImpl"/>
+    </bean>
+	
+    <bean id = "hetongServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.HetongServiceImpl">
+    	<property name = "save_hetong_dao" ref = "hetongDaoImpl"/>
+    </bean>
+    
+     <bean id = "save_studentServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.SaveStudentServiceImpl">
+    	<property name = "encryptionService" ref = "encryptionServiceImpl"/>
+    	<property name = "userDao" ref = "studentDaoImpl"/>
+    </bean>
+    <bean id = "unitPriceServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.UnitPriceServiceImpl">
+    	<property name = "unit_price_dao" ref = "unit_priceDaoImpl"/>
+    </bean>
+    
+    <bean id = "courseTypeServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.CourseTypeServiceImpl">
+    	<property name = "courseTypeDao" ref = "courseTypeDaoImpl"/>
+    </bean>
+    
+    <bean id = "classHourServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.ClassHourServiceImpl">
+    	<property name = "classHourDao" ref = "classHourDaoImpl"/>
+    	<property name = "userService" ref = "studentSerImpl"/>
+    	<property name = "courseTypeService" ref = "courseTypeServiceImpl"/>
+    </bean>
+    
+    <bean id = "dayServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.DayServiceImpl" />
+  
+    
+    <bean id = "classTableServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.ClassTableServiceImpl">
+    	<property name = "classTableDao" ref = "classTableDaoImpl"/>
+    </bean>
+    
+    <bean id = "tableCheckServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.TableCheckServiceImpl">
+    	<property name = "classHourService" ref = "classHourServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    </bean>
+    
+    <bean id = "jobServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.JobServiceImpl">
+    	<property name = "jobdao" ref = "jobDaoImpl"/>
+    </bean>
+    
+    <bean id = "searchStuffServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.SearchStuffServiceImpl">
+    	<property name = "searchStuffDao" ref = "searchStuffDaoImpl"/>
+    </bean>
+    
+    <bean id = "saveStuffServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.SaveStuffServiceImpl">
+    	<property name = "userDao" ref = "stuffDaoImpl"/>
+    	<property name = "jobService" ref = "jobServiceImpl"/>
+    </bean>
+    
+    <bean id = "accessManagerServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.AccessManagerServiceImpl" />
+    
+    <bean id = "resetPassServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.ResetPassServiceImpl">
+    	<property name = "userdao" ref = "stuffDaoImpl"/>
+    	<property name = "encryptionService" ref = "encryptionServiceImpl"/>
+    </bean>
+    
+    <bean id = "achievementServiceImpl" class = "com.yaodingjiaoyu.ServiceImpl.AchievementServiceImpl">
+    	<property name = "achievementdao" ref = "achievementDaoImpl"/>
+    </bean>
+</beans>

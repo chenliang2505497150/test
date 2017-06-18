@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="cc" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="com.yaodingjiaoyu.interceptor.LoginInterceptor" />
+			<interceptor name="PowerInterceptor"
+				class="com.yaodingjiaoyu.interceptor.PowerInterceptor" />
+			<interceptor name="FormatInterceptor"
+				class="com.yaodingjiaoyu.interceptor.FormatInterceptor" />
+			
+				
+				
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor-stack name="format-stack">
+				<interceptor-ref name="FormatInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 重新定义默认拦截器 -->
+		<default-interceptor-ref name="mydefault" />
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="building" type="redirect">/build/building.jsp</result>
+		</global-results>
+
+		<action name="cc" class="cc_main_action">
+			<result name="success">/cc/cc.jsp</result>
+
+		</action>
+		
+
+		<action name="cc_examples" class="cc_examples">
+			<result type="redirect" name="cc_examples_1">cc_examples_1</result>
+			<result type="redirect" name="cc_examples_2">cc_examples_2</result>
+			<result type="redirect" name="cc_examples_3">cc_examples_3</result>
+		</action>
+
+		<action name="cc_hetong" class="cc_hetong">
+			<result type="redirect" name="cc_hetong_1">cc_hetong_1</result>
+			<result type="redirect" name="cc_hetong_2">cc_hetong_2</result>
+		</action>
+
+
+		<!-- 例子库的各个栏目 -->
+		<action name="cc_examples_1" class="cc_examples_1">
+			<result name="success">/cc/cc_examples_1.jsp</result>
+
+		</action>
+		<action name="cc_examples_2" class="cc_examples_2">
+			<result name="success">/cc/cc_examples_2.jsp</result>
+
+		</action>
+		<action name="cc_examples_3" class="cc_examples_3">
+			<result name="success">/cc/cc_examples_3.jsp</result>
+
+		</action>
+		<action name="cc_change" class="cc_change_example">
+			<result name="success">/cc/cc_change.jsp</result>
+
+		</action>
+		<action name="cc_add_content" class="cc_add_content">
+			<result name="success">/cc/cc_add_content.jsp</result>
+
+		</action>
+
+		<!-- 例子库的Ajax -->
+		<action name="cc_search_examples" class="cc_search_examples_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cc_search_cc_content" class="cc_search_ccContent_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="CcdoUpload" class="cc_examples_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cc_change_example" class="cc_change_example_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cc_get_simple_content" class="cc_get_simple_content">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cc_add_content_ajax" class="cc_add_content_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- ／例子库的Ajax -->
+
+		<!-- /例子库的各个栏目 -->
+
+		<!-- 合同的栏目 -->
+		<action name="cc_hetong_1" class="cc_hetong_1">
+			<result name="success">/cc/cc_hetong_1.jsp</result>
+
+		</action>
+
+		<action name="cc_hetong_2" class="cc_hetong_2">
+			<result name="success">/cc/cc_hetong_2.jsp</result>
+
+		</action>
+
+		<!-- 合同的Ajax -->
+		<action name="cc_search_hetong" class="cc_search_hetong">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="cc_add_hetong" class="cc_save_hetong">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /合同的Ajax -->
+		<!-- /合同的栏目 -->
+	</package>
+
+</struts> 

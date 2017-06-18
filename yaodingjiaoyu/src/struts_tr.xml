@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="tr" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="com.yaodingjiaoyu.interceptor.LoginInterceptor" />
+			<interceptor name="PowerInterceptor"
+				class="com.yaodingjiaoyu.interceptor.PowerInterceptor" />
+			<interceptor name="FormatInterceptor"
+				class="com.yaodingjiaoyu.interceptor.FormatInterceptor" />
+			
+				
+				
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor-stack name="format-stack">
+				<interceptor-ref name="FormatInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 重新定义默认拦截器 -->
+		<default-interceptor-ref name="mydefault" />
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="building" type="redirect">/build/building.jsp</result>
+		</global-results>
+		
+		
+
+		<action name="tr" class="tr_main_action">
+			<result name="success">/tr/tr.jsp</result>
+		</action>
+
+		<action name="tr_stuinfo" class="tr_stuInfo">
+			<result type="redirect" name="tr_stuinfo_1">tr_stuinfo_1</result>
+		</action>
+
+
+
+		<action name="tr_classtable" class="tr_classtable">
+			<result type="redirect" name="tr_classtable_1">tr_classtable_1</result>
+			<result type="redirect" name="tr_classtable_2">tr_classtable_2</result>
+		</action>
+		<!-- 学员管理 -->
+		<action name="tr_stuinfo_1" class="tr_stuinfo_1">
+			<result name="success">/tr/tr_stuinfo_1.jsp</result>
+		</action>
+
+		<action name="tr_student_detail" class="tr_student_detail">
+			<result name="success">/tr/tr_student_detail.jsp</result>
+		</action>
+
+		<action name="tr_add_content" class="tr_addClassContent">
+			<result name="success">/tr/tr_add_content.jsp</result>
+		</action>
+
+		<!-- Ajax -->
+		<action name="tr_search_stu" class="tr_search_student">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="tr_get_simple_content" class="tr_get_simple_content_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /Ajax -->
+		<!-- /学员管理 -->
+
+		<!-- 课表管理 -->
+		<action name="tr_classtable_1" class="tr_classtable_1">
+			<result name="success">/tr/tr_classtable_1.jsp</result>
+		</action>
+
+		<action name="tr_classtable_2" class="tr_classtable_2">
+			<result name="success">/tr/tr_classtable_2.jsp</result>
+		</action>
+
+		<action name="tr_search_classtable" class="tr_search_classtable">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="tr_search_classlist" class="tr_search_classtable_list">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /课表管理 -->
+
+	</package>
+
+</struts> 

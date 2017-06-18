@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Campus" table="campus" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="300" not-null="true">
+                <comment>&#230;&#160;&#161;&#229;&#140;&#186;&#231;&#154;&#132;&#229;&#144;&#141;&#231;&#167;&#176;</comment>
+            </column>
+        </property>
+        <set name="stuffs" table="stuff" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Stuff" />
+        </set>
+        <set name="campusPrices" table="campus_price" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true">
+                    <comment>&#230;&#160;&#161;&#229;&#140;&#186;&#231;&#154;&#132;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CampusPrice" />
+        </set>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Student" />
+        </set>
+        <set name="classContents" table="class_content" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassContent" />
+        </set>
+        <set name="exampleses" table="examples" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Examples" />
+        </set>
+        <set name="ccContents" table="cc_content" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CcContent" />
+        </set>
+        <set name="classTables" table="class_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassTable" />
+        </set>
+        <set name="crPlans" table="cr_plan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CrPlan" />
+        </set>
+        <set name="ccPlans" table="cc_plan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.CcPlan" />
+        </set>
+        <set name="suggests" table="suggest" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Suggest" />
+        </set>
+        <set name="hetongs" table="hetong" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="campus" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Hetong" />
+        </set>
+    </class>
+</hibernate-mapping>

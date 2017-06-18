@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/jdbc  
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd  
+    http://www.springframework.org/schema/cache  
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+    http://www.springframework.org/schema/util  
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd">   
+	
+	 
+   
+	<bean id = "admin_main_action" class = "com.yaodingjiaoyu.action.Admin_init_Main" >
+    	<property name = "stuffService" ref = "stuffSerImpl"/>
+    </bean>
+    
+   <bean id = "admin_stuff_manager" class = "com.yaodingjiaoyu.action.admin.Admin_Stuff_Manager"/>
+   <bean id = "admin_examples" class = "com.yaodingjiaoyu.action.admin.AdminExamplesManager"/>
+   <bean id = "admin_student" class = "com.yaodingjiaoyu.action.admin.Admin_StudentManager"/>
+   <bean id = "admin_hetong" class = "com.yaodingjiaoyu.action.admin.Admin_HetongManager"/>
+   <bean id = "admin_classtable" class = "com.yaodingjiaoyu.action.admin.Admin_ClassTableManager"/> 
+   
+   
+     
+   <!-- 例子库 -->
+	<bean id = "admin_examples_1" class = "com.yaodingjiaoyu.action.admin.Admin_Examples_Action1">
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "searchExamplesService" ref = "examplesServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_examples_2" class = "com.yaodingjiaoyu.action.admin.Admin_Examples_Action2">
+    	<property name = "searchCcContentService" ref = "cc_contentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    <bean id = "admin_examples_3" class = "com.yaodingjiaoyu.action.admin.Admin_Examples_Action3">
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    </bean>
+
+
+	<bean id = "admin_examples_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_SaveExamples_Aajx">
+		<property name = "saveExamplesService" ref = "examplesServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_examples_file_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_SaveExamplesFile_Ajax">
+		<property name = "saveUploadFileService" ref = "save_upload_fileServiceImpl"/>
+		<property name = "saveExamplesService" ref = "examplesServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_search_examples_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_SeachExamples_Ajax">
+		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "searchExamplesService" ref = "examplesServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_change_example_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_ChangeExamples_Ajax">
+		<property name = "examplesService" ref = "examplesServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_search_ccContent_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_SearchCcContent_Ajax">
+		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "searchCcContentService" ref = "cc_contentServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+
+	<bean id = "admin_getSalerList_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_GetCCList_Action_Ajax">
+		<property name = "pageListService" ref = "pagelistServiceImpl"/>
+		<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_examples_delete_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_DeleteExamples_Ajax">
+		<property name = "examplesService" ref = "examplesServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_change_example" class = "com.yaodingjiaoyu.action.admin.Admin_ChangeExamples_Action">
+		<property name = "examplesService" ref = "examplesServiceImpl"/>
+		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    </bean>
+	<!-- /例子库 -->
+	
+	<!-- 学员管理 -->
+	<bean id = "admin_stuinfo_1" class = "com.yaodingjiaoyu.action.admin.Admin_Student_Action1">
+    	<property name = "searchStudentService" ref = "search_StudentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_search_student" class = "com.yaodingjiaoyu.ajax.admin.Admin_SearchStudent_Ajax">
+    	<property name = "searchStudentService" ref = "search_StudentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    <bean id = "admin_stuinfo_2" class = "com.yaodingjiaoyu.action.admin.Admin_Student_Action2">
+    	<property name = "searchClassContentService" ref = "class_contentServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_getcr_trList_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_GetClassContentStuffList_Action_Ajax">
+		<property name = "pageListService" ref = "pagelistServiceImpl"/>
+		<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    <bean id = "admin_search_classContent_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_SearchClassContent_Ajax">
+		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "searchClassContentService" ref = "class_contentServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_change_student" class = "com.yaodingjiaoyu.action.admin.Admin_ChangeStudent_Action">
+		<property name = "studentService" ref = "studentSerImpl"/>
+		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_change_student_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_ChangeStudent_Ajax">
+		<property name = "studentService" ref = "studentSerImpl"/>
+		<property name = "saveStudentService" ref = "save_studentServiceImpl"/>
+    </bean>
+    
+	<!-- /学员管理 -->
+	
+	<!-- 合同管理 -->
+	<bean id = "admin_hetong_1" class = "com.yaodingjiaoyu.action.admin.Admin_Hetong_Action_1">
+		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "searchHetongService" ref = "hetongServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_search_hetong" class = "com.yaodingjiaoyu.ajax.admin.Admin_SearchHetong_Ajax">
+		<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "searchHetongService" ref = "hetongServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    
+    <bean id = "admin_getcr_ccList_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_GetCr_Cc_List_Ajax">
+		<property name = "pageListService" ref = "pagelistServiceImpl"/>
+		<property name = "transLateService" ref = "translateServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_change_hetong" class = "com.yaodingjiaoyu.action.admin.Admin_ChangeHetong_Action">
+		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+		<property name = "hetongService" ref = "hetongServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_change_hetong_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_ChangeHetong_Ajax">
+		<property name = "studentService" ref = "studentSerImpl"/>
+		<property name = "hetongService" ref = "hetongServiceImpl"/>
+		<property name = "classHourService" ref = "classHourServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_delete_hetong_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_DeleteHetong_Ajax">
+		<property name = "studentService" ref = "studentSerImpl"/>
+		<property name = "hetongService" ref = "hetongServiceImpl"/>
+		<property name = "classHourService" ref = "classHourServiceImpl"/>
+    </bean>
+    
+   
+	
+	<!-- /合同管理 -->
+	
+	<!-- 课表管理 -->
+	<bean id = "admin_classtable_1" class = "com.yaodingjiaoyu.action.admin.Admin_ClassTable_Action1">
+		<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "pageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_search_classtable_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_SearchClassTable_Ajax">
+    	<property name = "getItemInfoService" ref = "get_item_infoServiceImpl"/>
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "transLateService" ref = "translateServiceImpl"/>
+    	<property name = "pageListService" ref = "pagelistServiceImpl"/>
+    	<property name = "getResultObjectListService" ref = "get_resultobject_listServiceImpl"/>
+    </bean>
+    
+    <bean id = "admin_delete_classtable" class = "com.yaodingjiaoyu.ajax.admin.Admin_DeleteClassTable_Ajax">
+    	<property name = "classTableService" ref = "classTableServiceImpl"/>
+    	<property name = "studentService" ref = "studentSerImpl"/>
+    	<property name = "classHourService" ref = "classHourServiceImpl"/>
+    </bean>
+
+	<!-- /课表管理 -->
+	
+	<!-- 职工管理 -->
+	<bean id = "admin_create_stuff" class = "com.yaodingjiaoyu.action.admin.Admin_Stuff_Manager_Action1">
+		<property name = "loadPageListService" ref = "pagelistServiceImpl"/>
+	</bean>
+	
+	<bean id = "admin_create_stuff_ajax" class = "com.yaodingjiaoyu.ajax.admin.Admin_CreateStuff_Ajax">
+		<property name = "stuffService" ref = "stuffSerImpl"/>
+		<property name = "encryptionService" ref = "encryptionServiceImpl"/>
+		<property name = "jobService" ref = "jobServiceImpl"/>
+	</bean>
+	<!-- /职工管理 -->
+</beans>

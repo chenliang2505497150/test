@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="sd" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="com.yaodingjiaoyu.interceptor.LoginInterceptor" />
+			<interceptor name="PowerInterceptor"
+				class="com.yaodingjiaoyu.interceptor.PowerInterceptor" />
+			<interceptor name="FormatInterceptor"
+				class="com.yaodingjiaoyu.interceptor.FormatInterceptor" />
+				
+				
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor-stack name="format-stack">
+				<interceptor-ref name="FormatInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 重新定义默认拦截器 -->
+		<default-interceptor-ref name="mydefault" />
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="building" type="redirect">/build/building.jsp</result>
+		</global-results>
+		
+		
+
+		<action name="sd" class="sd_main_action">
+			<result name="success">/sd/sd.jsp</result>
+		</action>
+
+		<action name="sd_examples" class="sd_examples">
+			<result type="redirect" name="sd_examples_1">sd_examples_1</result>
+			<result type="redirect" name="sd_examples_2">sd_examples_2</result>
+			<result type="redirect" name="sd_examples_3">sd_examples_3</result>
+		</action>
+
+		<action name="sd_stuinfo" class="sd_student">
+			<result type="redirect" name="sd_stuinfo_1">sd_stuinfo_1</result>
+			<result type="redirect" name="sd_stuinfo_2">sd_stuinfo_2</result>
+		</action>
+
+		<action name="sd_hetong" class="sd_hetong">
+			<result type="redirect" name="sd_hetong_1">sd_hetong_1</result>
+			<result type="redirect" name="sd_hetong_2">sd_hetong_2</result>
+		</action>
+
+		<action name="sd_classtable" class="sd_classtable">
+			<result type="redirect" name="sd_classtable_1">sd_classtable_1</result>
+			<result type="redirect" name="sd_classtable_map">sd_classtable_map</result>
+		</action>
+		
+		<action name="sd_stuff" class="sd_stuff">
+			<result type="redirect" name="sd_manager_stuff">sd_manager_stuff</result>
+			<result type="redirect" name="sd_create_account">sd_create_account</result>
+		</action>
+		
+		<!-- 合同的各个栏目 -->
+		<action name="sd_hetong_1" class="sd_hetong_1">
+			<result name="success">/sd/sd_hetong_1.jsp</result>
+
+		</action>
+
+		<action name="sd_hetong_2" class="sd_hetong_2">
+			<result name="success">/sd/sd_hetong_2.jsp</result>
+
+		</action>
+
+		<action name="sd_add_operate" class="sd_add_operate">
+			<result name="success">/sd/sd_add_operate.jsp</result>
+
+		</action>
+
+		<action name="sd_add_operate_ajax" class="sd_add_operate_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /合同的各个栏目 -->
+
+
+		<!-- 例子库的各个栏目 -->
+		<action name="sd_examples_1" class="sd_examples_1">
+			<result name="success">/sd/sd_examples_1.jsp</result>
+
+		</action>
+		<action name="sd_examples_2" class="sd_examples_2">
+			<result name="success">/sd/sd_examples_2.jsp</result>
+
+		</action>
+		<action name="sd_examples_3" class="sd_examples_3">
+			<result name="success">/sd/sd_examples_3.jsp</result>
+
+		</action>
+		<!-- /例子库的各个栏目 -->
+
+		<!-- 例子库的Ajax -->
+		<action name="sd_search_examples" class="sd_search_examples_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="sd_search_cc_content" class="sd_search_ccContent_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="sd_save_examples" class="sd_save_examples_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="sd_distribution_examples" class="sd_distribution_examples_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- ／例子库的Ajax -->
+
+
+		<!-- 学员管理的各个栏目 -->
+		<action name="sd_stuinfo_1" class="sd_stuinfo_1">
+			<result name="success">/sd/sd_stuinfo_1.jsp</result>
+
+		</action>
+		<action name="sd_stuinfo_2" class="sd_stuinfo_2">
+			<result name="success">/sd/sd_stuinfo_2.jsp</result>
+
+		</action>
+		<action name="sd_change_student" class="sd_change_student">
+			<result name="success">/sd/sd_change_student.jsp</result>
+
+		</action>
+
+		<action name="sd_change_student_ajax" class="sd_change_student_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="sd_distribution_student" class="sd_distribution_student_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /学员管理的各个栏目 -->
+
+
+
+		<!-- 合同管理的Ajax -->
+		<action name="sd_search_hetong" class="sd_search_hetong">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="sd_add_hetong" class="sd_save_hetong">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /合同管理的Ajax -->
+
+
+
+		<!-- 学院管理的Ajax -->
+		<action name="sd_search_student" class="sd_search_student">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<action name="sd_search_class_content" class="sd_search_classContent_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		<!-- /学院管理的Ajax -->
+
+
+
+		<!-- 学员课表管理的各个栏目 -->
+		<action name="sd_classtable_1" class="sd_classtable_1">
+			<result name="success">/sd/sd_classtable_1.jsp</result>
+		</action>
+
+
+		<action name="sd_search_classtable" class="sd_search_classtable_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_classtable_map" class="sd_classtable_map">
+			<result name="success">/sd/sd_classtable_map.jsp</result>
+		</action>
+		
+
+		<!-- /学员课表管理的各个栏目 -->
+		<action name="sd_confirm_classtable_list" class="sd_confirm_classtable_list_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<!-- 职工管理的各个模块 -->
+		<action name="sd_manager_stuff" class="sd_manager_stuff">
+			<result name="success">/sd/sd_manager_stuff.jsp</result>
+		</action>
+		
+		<action name="sd_search_stuff" class="sd_search_stuff_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_change_stuff" class="sd_change_stuff_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_unfreeze_stuff" class="sd_unfreeze_stuff_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_freeze_stuff" class="sd_freeze_stuff_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_resetstuff_password" class="sd_resetpass_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_freeze_stuff_list" class="sd_freeze_stufflist_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_unfreeze_stuff_list" class="sd_unfreeze_stufflist_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_add_stuff" class="sd_create_stuff_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="sd_lookstuff_detail" class="sd_stuff_detail_action">
+			<result name="success">/sd/sd_lookstuff_detail.jsp</result>
+		</action>
+
+		<action name="sd_create_account" class="sd_create_account">
+			<result name="success">/sd/sd_create_account.jsp</result>
+		</action>
+		<!-- /职工管理的各个模块 -->
+		
+		
+		
+	</package>
+
+</struts> 

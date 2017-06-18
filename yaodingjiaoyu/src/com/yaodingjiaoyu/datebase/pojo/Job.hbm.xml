@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.Job" table="job" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="40" not-null="true" />
+        </property>
+        <property name="key" type="string">
+            <column name="key" length="10" not-null="true" />
+        </property>
+        <set name="stuffs" table="stuff" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="job" not-null="true" />
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Stuff" />
+        </set>
+        <set name="classContents" table="class_content" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="job" not-null="true">
+                    <comment>
+                    &#229;&#189;&#147;&#230;&#151;&#182;&#231;&#154;&#132;&#230;&#183;&#187;&#229;&#138;&#160;&#228;&#186;&#186;&#232;&#129;&#140;&#228;&#189;&#141;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.ClassContent" />
+        </set>
+    </class>
+</hibernate-mapping>

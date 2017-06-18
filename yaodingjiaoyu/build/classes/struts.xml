@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+
+
+
+
+	<package name="default" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="LoginInterceptor"
+				class="com.yaodingjiaoyu.interceptor.LoginInterceptor" />
+			<interceptor name="PowerInterceptor"
+				class="com.yaodingjiaoyu.interceptor.PowerInterceptor" />
+			<interceptor name="FormatInterceptor"
+				class="com.yaodingjiaoyu.interceptor.FormatInterceptor" />
+				
+				
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor-stack name="format-stack">
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="PowerInterceptor"></interceptor-ref>
+				<interceptor-ref name="FormatInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 重新定义默认拦截器 -->
+		<default-interceptor-ref name="mydefault" />
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="building" type="redirect">/build/building.jsp</result>
+		</global-results>
+		
+		<action name="version" class="version">
+			<result name="success">/version.jsp</result>
+		</action>
+
+		<action name="Login" class="login_action">
+			<result type="redirect" name="cr">cr</result>
+			<result type="redirect" name="tr">tr</result>
+			<result type="redirect" name="cc">cc</result>
+			<result type="redirect" name="admin">admin</result>
+			<result type="redirect" name="sd">sd</result>
+			<result type="redirect" name="ss">ss</result>
+			<result type="chain" name="fail">fail</result>
+		</action>
+		
+		<!-- 处理登陆失败和冻结账户的请求 -->
+		<action name="fail" class="login_fail" >
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="change_password" class="changePassword_Ajax" >
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="Logout" class="logout_action" />
+		
+		<action name="user_info" class="userInformation_action">
+			<result name="student">/ss/userInfo.jsp</result>
+			<result name="stuff">/userInfo.jsp</result>
+		</action>
+		
+		<action name="change_stuffInfo" class="changeStuffInfo_Ajax" >
+			<interceptor-ref name="format-stack"/>
+		</action>
+
+		<action name="examples_detail" class="examples_detail">
+			<result name="success">/examples_detail.jsp</result>
+		</action>
+
+		<action name="student_detail" class="student_detail_ajax">
+			<result name="success">/student_detail.jsp</result>
+		</action>
+
+		<action name="hetong_detail" class="detail_hetong">
+			<result name="success">/hetong_detail.jsp</result>
+		</action>
+
+
+		<action name="getcrList_ajax" class="getcrList_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="unitPrice" class="unitPrice_ajax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_get_classhour" class="getClassHourAjax">
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="achieve_manager" class="achieve_manager">
+			<result type="redirect" name="cc_achieve">cc_achieve</result>
+			<result type="redirect" name="cr_achieve">cr_achieve</result>
+			<result type="redirect" name="tr_achieve">tr_achieve</result>
+		</action>
+		
+		<action name="cc_achieve" class="cc_achieve">
+			<result name="success">/general/achievement_cc.jsp</result>
+		</action>
+		
+		<action name="cr_achieve" class="cr_achieve">
+			<result name="success">/general/achievement_cr.jsp</result>
+		</action>
+		
+		<action name="tr_achieve" class="tr_achieve">
+			<result name="success">/general/achievement_tr.jsp</result>
+		</action>
+		
+		<action name="cc_achieve_ajax" class="cc_achieve_ajax" >
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="cr_achieve_ajax" class="cr_achieve_ajax" >
+			<interceptor-ref name="format-stack"/>
+		</action>
+		
+		<action name="tr_achieve_ajax" class="tr_achieve_ajax" >
+			<interceptor-ref name="format-stack"/>
+		</action>
+
+	</package>
+
+	<include file="struts_admin.xml" />
+	<include file="struts_cr.xml" />
+	<include file="struts_tr.xml" />
+	<include file="struts_cc.xml" />
+	<include file="struts_sd.xml" />
+	<include file="struts_ss.xml" />
+</struts> 

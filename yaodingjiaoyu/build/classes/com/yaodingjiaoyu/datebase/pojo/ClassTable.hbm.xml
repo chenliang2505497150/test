@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-26 22:27:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yaodingjiaoyu.datebase.pojo.ClassTable" table="class_table" catalog="yding">
+        <id name="PId" type="java.lang.Integer">
+            <column name="P_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="com.yaodingjiaoyu.datebase.pojo.Student" fetch="join">
+            <column name="student" not-null="true" />
+        </many-to-one>
+        <many-to-one name="stuff" class="com.yaodingjiaoyu.datebase.pojo.Stuff" fetch="join">
+            <column name="stuff" not-null="true" />
+        </many-to-one>
+        <many-to-one name="courseType" class="com.yaodingjiaoyu.datebase.pojo.CourseType" fetch="join">
+            <column name="course_type" not-null="true">
+                <comment>1v1,1v3</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="campus" class="com.yaodingjiaoyu.datebase.pojo.Campus" fetch="join">
+            <column name="campus" not-null="true" />
+        </many-to-one>
+        <many-to-one name="level" class="com.yaodingjiaoyu.datebase.pojo.Level" fetch="join">
+            <column name="level" not-null="true">
+                <comment>&#229;&#185;&#180;&#231;&#186;&#167;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="classTime" class="com.yaodingjiaoyu.datebase.pojo.ClassTime" fetch="join">
+            <column name="class_time" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subject" class="com.yaodingjiaoyu.datebase.pojo.Subject" fetch="join">
+            <column name="subject" not-null="true" />
+        </many-to-one>
+        <property name="dayTime" type="date">
+            <column name="day_time" length="10" not-null="true" />
+        </property>
+        <property name="remarks" type="string">
+            <column name="remarks" length="200" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true">
+                <comment>&#230;&#152;&#175;&#229;&#144;&#166;&#229;&#183;&#178;&#228;&#184;&#138;</comment>
+            </column>
+        </property>
+        <set name="suggests" table="suggest" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="class_table" not-null="true">
+                    <comment>&#232;&#175;&#190;&#232;&#161;&#168;&#231;&#188;&#150;&#229;&#143;&#183;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.yaodingjiaoyu.datebase.pojo.Suggest" />
+        </set>
+    </class>
+</hibernate-mapping>
